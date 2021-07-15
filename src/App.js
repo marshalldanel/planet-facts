@@ -3,7 +3,7 @@ import { ThemeProvider } from 'styled-components';
 import GlobalStyle from './styles/globalStyles';
 import { theme } from './styles/theme';
 
-import Nav from './components/Nav.js';
+import NavBar from './components/NavBar';
 const axios = require('axios');
 
 function App() {
@@ -22,7 +22,7 @@ function App() {
     <>
       <GlobalStyle />
       <ThemeProvider theme={theme}>
-        <Nav planets={planetFacts} />
+        <NavBar planets={planetFacts} />
         <p>Facts go here.</p>
       </ThemeProvider>
     </>
