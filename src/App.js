@@ -3,6 +3,7 @@ import { ThemeProvider } from 'styled-components';
 import GlobalStyle from './styles/globalStyles';
 import { theme } from './styles/theme';
 
+import Nav from './components/Nav.js';
 const axios = require('axios');
 
 function App() {
@@ -16,11 +17,13 @@ function App() {
   useEffect(() => {
     fetchFacts();
   }, [fetchFacts]);
+
   return (
     <>
       <GlobalStyle />
       <ThemeProvider theme={theme}>
-      <p>Facts go here.</p>
+        <Nav planets={planetFacts} />
+        <p>Facts go here.</p>
       </ThemeProvider>
     </>
   );
