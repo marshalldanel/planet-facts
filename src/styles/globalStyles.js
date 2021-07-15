@@ -2,7 +2,14 @@ import { createGlobalStyle } from 'styled-components';
 import { normalize } from 'styled-normalize';
 
 const GlobalStyle = createGlobalStyle`
-  ${normalize}
+  ${normalize};
+
+  * {box-sizing:border-box;}
+  
+  body {
+    background-color:	hsl(240, 67%, 8%);
+    color: hsl(0, 0%, 100%)
+  }
 
   h1, h2 {
     font-family: 'Antonio';
@@ -17,7 +24,7 @@ const GlobalStyle = createGlobalStyle`
 
   h2 {
     line-height: 52px;
-    font-size: 80px;
+    font-size: 40px;
     letter-spacing: -1.5px;
   }
 
