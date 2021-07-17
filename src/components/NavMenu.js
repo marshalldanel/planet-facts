@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Circle = styled.span`
@@ -98,11 +99,19 @@ export default function Nav({ planets, visible, setVisible }) {
   return (
     <NavList visible={visible}>
       {planets.map((planet) => (
-        <NavItem key={planet.name}>
-          <Circle name={planet.name} />
-          <NavName>{planet.name}</NavName>
-          <Arrow />
-        </NavItem>
+        <Link
+          to={{
+            pathname: `/${planet.name.toLowerCase()}`,
+            state: { planet },
+          }}
+          key={planet.name}
+        >
+          <NavItem>
+            <Circle name={planet.name} />
+            <NavName>{planet.name}</NavName>
+            <Arrow />
+          </NavItem>
+        </Link>
       ))}
     </NavList>
   );

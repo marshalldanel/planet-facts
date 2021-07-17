@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Burger from './Burger';
 
@@ -42,7 +43,14 @@ const NavStyles = styled.nav`
 export default function NavBar({ planets }) {
   return (
     <NavStyles>
-      <TextLogo>The Planets</TextLogo>
+      <Link
+        to={{
+          pathname: `/earth`,
+          state: { planet: planets.find((planet) => planet.name === 'Earth') },
+        }}
+      >
+        <TextLogo>The Planets</TextLogo>
+      </Link>
       <Burger planets={planets} />
     </NavStyles>
   );
