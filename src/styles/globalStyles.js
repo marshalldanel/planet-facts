@@ -4,9 +4,19 @@ import { normalize } from 'styled-normalize';
 const GlobalStyle = createGlobalStyle`
   ${normalize};
 
-  * {box-sizing:border-box;}
+  :root {
+    font-size: 62.5%;
+    box-sizing: border-box;
+  } 
+
+  *, *:before, *:after{
+    padding: 0;
+    margin: 0;
+    box-sizing: inherit;
+  } 
   
   body {
+    font-size: 1.6rem;
     background-color:	hsl(240, 67%, 8%);
     color: hsl(0, 0%, 100%)
   }
@@ -17,15 +27,15 @@ const GlobalStyle = createGlobalStyle`
   }
 
   h1 {
-    line-height: 103px;
-    font-size: 80px;
-    letter-spacing: 0px;
+    line-height: 10.3rem;
+    font-size: 8rem;
+    letter-spacing: 0;
   }
 
   h2 {
-    line-height: 52px;
-    font-size: 40px;
-    letter-spacing: -1.5px;
+    line-height: 5.2rem;
+    font-size: 4rem;
+    letter-spacing: -.15rem;
   }
 
   h3, h4 {
@@ -34,24 +44,24 @@ const GlobalStyle = createGlobalStyle`
   }
 
   h3 {
-    line-height: 25px;
-    font-size: 12px;
-    letter-spacing: 2.6px;
+    line-height: 2.5rem;
+    font-size: 1.2rem;
+    letter-spacing: .26rem;
   }
 
 
   h4 {
-    line-height: 25px;
-    font-size: 11px;
-    letter-spacing: 1px;
+    line-height: 2.5rem;
+    font-size: 1.1rem;
+    letter-spacing: .1rem;
   }
 
   p {
     font-family: 'Spartan';
     font-style: normal;
     font-weight: 400;
-    line-height: 25px;
-    font-size: 14px;
+    line-height: 2.5rem;
+    font-size: 1.4rem;
     text-align: left;
   }
 `;

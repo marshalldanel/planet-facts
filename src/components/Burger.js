@@ -1,30 +1,31 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import NavMenu from './NavMenu';
+import { mediaQueries } from '../styles/mediaQueries';
 
 const BurgerStyles = styled.div`
   display: none;
   height: 2rem;
   position: fixed;
-  right: 32px;
-  top: 22px;
+  right: 3.2rem;
+  top: 2.2rem;
   width: 2rem;
-  z-index: 20;
+  z-index: 2;
 
-  @media (max-width: 767px) {
+  ${mediaQueries('mobile', 'max')`
     display: flex;
     flex-flow: column nowrap;
     justify-content: space-around;
-  }
+  `}
 
   div {
     background-color: ${({ visible }) =>
       visible ? 'hsl(240, 17%, 26%)' : '#FFF'};
     height: 0.25rem;
-    transform-origin: 1px;
+    transform-origin: 0.1rem;
     transition: all 0.3s linear;
     width: 2rem;
-    height: 3px;
+    height: 0.3rem;
   }
 `;
 

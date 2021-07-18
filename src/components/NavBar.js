@@ -1,43 +1,45 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { mediaQueries } from '../styles/mediaQueries';
+
 import Burger from './Burger';
 
 const TextLogo = styled.div`
   font-family: Antonio;
-  font-size: 28px;
-  line-height: 36px;
-  letter-spacing: -1.05px;
-  margin: 22px 0 0 32px;
+  font-size: 2.8rem;
+  line-height: 3.6rem;
+  letter-spacing: -0.105rem;
+  margin: 2.2rem 0 0 3.2rem;
   text-transform: uppercase;
 
-  @media (min-width: 768px) {
-    margin: 37px 0 34px 0;
-  }
+  ${mediaQueries('tablet')`
+    margin: 3.7rem 0 3.4rem 0;
+  `}
 
-  @media (min-width: 1024px) {
-    margin: 0 0 0 32px;
-  }
+  ${mediaQueries('desktop')`
+    margin: 0 0 0 3.2rem;
+  `}
 `;
 
 const NavStyles = styled.nav`
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 0.1rem solid rgba(255, 255, 255, 0.2);
   display: flex;
-  height: 85px;
+  height: 8.5rem;
   top: 0;
   width: 100%;
 
-  @media (min-width: 768px) {
+  ${mediaQueries('tablet')`
     align-items: center;
     flex-flow: column nowrap;
-    height: 159px;
-  }
+    height: 15.9rem;
+  `}
 
-  @media (min-width: 1024px) {
+  ${mediaQueries('desktop')`
     flex-flow: row nowrap;
-    height: 85px;
+    height: 8.5rem;
     justify-content: space-between;
-  }
+  `}
 `;
 
 export default function NavBar({ planets }) {

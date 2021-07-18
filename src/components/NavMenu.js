@@ -1,18 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { mediaQueries } from '../styles/mediaQueries';
 
 const Circle = styled.span`
   background: ${(props) => props.theme[props.name.toLowerCase()]};
   border-radius: 50%;
-  height: 20px;
-  margin-right: 15px;
-  width: 20px;
+  height: 2rem;
+  margin-right: 1.5rem;
+  width: 2rem;
 
   // Restrict to mobile
-  @media (min-width: 768px) {
+  ${mediaQueries('tablet')`
     display: none;
-  }
+  `}
 `;
 
 const NavList = styled.ul`
@@ -25,46 +26,52 @@ const NavList = styled.ul`
   width: 60vw;
 
   // Mobile Nav
-  @media (max-width: 767px) {
+  ${mediaQueries('mobile', 'max')`
     background-color: hsl(240, 67%, 8%);
     flex-flow: column nowrap;
     height: 100vh;
     justify-content: flex-start;
     position: fixed;
-    padding: 44px 24px;
-    top: 86px;
-    transform: ${({ visible }) =>
-      visible ? 'translateX(0)' : 'translateX(100%)'};
-    transition: transform 0.3s ease-in-out;
+    padding: 4.4rem 2.4rem;
+    top: 8.6rem;
     width: 100vw;
     -webkit-overflow-scrolling: touch;
-  }
+    transition: transform 0.3s ease-in-out;
+  `}
 
-  @media (min-width: 768px) {
-    padding-bottom: 27px;
+  // Can't pass props for conditional inside media query func 🙃
+  ${(props) =>
+    props.visible
+      ? mediaQueries('mobile', 'max')`transform: translateX(0);
+    `
+      : mediaQueries('mobile', 'max')`transform: translateX(100%);
+    `}
+
+  ${mediaQueries('tablet')`
+    padding-bottom: 2.7rem;
     width: 100vw;
-  }
+  `}
 
-  @media (min-width: 1024px) {
+  ${mediaQueries('desktop')`
     padding: 0;
     width: 50vw;
-  }
+  `}
 `;
 
 const NavItem = styled.li`
   align-items: center;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-top: 0.1rem solid rgba(255, 255, 255, 0.2);
   display: flex;
   flex-flow: row nowrap;
-  height: 66px;
+  height: 6.6rem;
 
   &:nth-child(1) {
     border: none;
   }
-  @media (min-width: 768px) {
+  ${mediaQueries('tablet')`
     border: none;
-    height: 25px;
-  }
+    height: 2.5rem;
+  `}
 `;
 
 const NavName = styled.h4`
@@ -72,27 +79,27 @@ const NavName = styled.h4`
   text-transform: uppercase;
 
   // Change default h4 sizing for mobile
-  @media (max-width: 767px) {
-    font-size: 15px;
-    line-height: 25px;
-    letter-spacing: 1.3px;
-    padding-top: 5px;
-  }
+  ${mediaQueries('mobile', 'max')`
+    font-size: 1.5rem;
+    line-height: 2.5rem;
+    letter-spacing: 0.13rem;
+    padding-top: 0.5rem;
+  `}
 `;
 
 const Arrow = styled.span`
   border: solid rgba(255, 255, 255, 0.2);
-  border-width: 0 1px 1px 0;
+  border-width: 0 0.1rem 0.1rem 0;
   display: inline-block;
   margin-left: auto;
-  padding: 2px;
+  padding: 0.2rem;
   transform: rotate(-45deg);
   -webkit-transform: rotate(-45deg);
 
   // Restrict to mobile
-  @media (min-width: 768px) {
+  ${mediaQueries('tablet')`
     border: none;
-  }
+  `}
 `;
 
 export default function Nav({ planets, visible, setVisible }) {
