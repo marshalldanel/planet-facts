@@ -36,7 +36,7 @@ const NavList = styled.ul`
     top: 8.6rem;
     width: 100vw;
     -webkit-overflow-scrolling: touch;
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.4s ease-in-out;
   `}
 
   // Can't pass props for conditional inside media query func 🙃
@@ -112,6 +112,7 @@ export default function Nav({ planets, visible, setVisible }) {
             state: { planet },
           }}
           key={planet.name}
+          onClick={() => setVisible(!visible)}
         >
           <NavItem>
             <Circle name={planet.name} />

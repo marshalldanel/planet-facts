@@ -27,13 +27,13 @@ const StyledBox = styled.div`
   `}
 
   p {
-    color: #ffffff;
+    // Opacity shows text through mobile nav
+    color: rgba(255, 255, 255, 0.5);
     font-family: Spartan;
     font-size: 0.8rem;
     font-weight: bold;
     letter-spacing: 0.073rem;
     line-height: 1.6rem;
-    opacity: 0.5;
     padding-left: 2.4rem;
     text-transform: uppercase;
 
