@@ -33,10 +33,10 @@ const NavList = styled.ul`
     justify-content: flex-start;
     position: fixed;
     padding: 4.4rem 2.4rem;
-    top: 8.6rem;
+    top: 8.5rem;
     width: 100vw;
-    -webkit-overflow-scrolling: touch;
     transition: transform 0.4s ease-in-out;
+    z-index: 100;
   `}
 
   // Can't pass props for conditional inside media query func 🙃

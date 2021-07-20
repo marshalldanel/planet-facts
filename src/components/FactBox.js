@@ -27,8 +27,8 @@ const StyledBox = styled.div`
   `}
 
   p {
-    // Opacity shows text through mobile nav
-    color: rgba(255, 255, 255, 0.5);
+    color: #fff;
+    opacity: 0.5;
     font-family: Spartan;
     font-size: 0.8rem;
     font-weight: bold;

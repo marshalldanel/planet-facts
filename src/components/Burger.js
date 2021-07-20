@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import NavMenu from './NavMenu';
 import { mediaQueries } from '../styles/mediaQueries';
@@ -31,6 +31,12 @@ const BurgerStyles = styled.div`
 
 export default function Burger({ planets }) {
   const [visible, setVisible] = useState(false);
+
+  // No scroll when mobile nav open
+  useEffect(() => {
+    visible && (document.body.style.overflow = 'hidden');
+    !visible && (document.body.style.overflow = 'unset');
+  }, [visible]);
 
   return (
     <>

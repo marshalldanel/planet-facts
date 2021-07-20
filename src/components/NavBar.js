@@ -27,7 +27,10 @@ const NavStyles = styled.nav`
   display: flex;
   height: 8.5rem;
   top: 0;
-  width: 100%;
+  position: sticky;
+  background-color: hsl(240, 67%, 8%);
+  z-index: 1;
+  width: 100vw;
 
   ${mediaQueries('tablet')`
     align-items: center;
