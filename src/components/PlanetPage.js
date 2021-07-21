@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import styled from 'styled-components/macro';
+import { mediaQueries } from '../styles/mediaQueries';
 import Planet from './Planet';
 import Button from './Button';
 
@@ -8,6 +9,12 @@ const StyledButtons = styled.div`
   display: flex;
   flex-flow: row;
   border-bottom: 0.1rem solid rgba(255, 255, 255, 0.2);
+
+  ${mediaQueries('tablet')`
+    border-bottom: none;
+    display: flex;
+    flex-flow: column;
+  `};
 `;
 
 export default function PlanetPage({ homePlanet }) {

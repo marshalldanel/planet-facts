@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components/macro';
 import { useViewport } from '../utils';
+import { mediaQueries } from '../styles/mediaQueries';
 
 const StyledButton = styled.button`
   height: 5rem;
@@ -15,6 +16,7 @@ const StyledButton = styled.button`
   font-family: Antonio;
   font-weight: 700;
   position: relative;
+  cursor: pointer;
 
   ${(props) =>
     props.view.viewName === props.currentView &&
@@ -27,10 +29,39 @@ const StyledButton = styled.button`
           left: 25%;
           height: .4rem;
           width: 50%;
-        };`
-      : `
-        opacity: .5;
-        `};
+        };`}
+
+  // Change after info styling
+  ${(props) =>
+    mediaQueries('tablet')`
+      border: 0.1rem solid rgba(255, 255, 255, 0.2);
+      height: 4rem;
+      width: 28.1rem;
+      margin-bottom: 1.6rem;
+      font-size: 1.2rem;
+      line-height: 2.5rem;
+      letter-spacing: .26rem;
+      :after {
+        content: none;
+      }
+  `};
+
+  // Button styles for tablet/desktop, can't pass into func
+  // TODO: Update mediaQueries func to accept props?
+  ${(props) =>
+    props.view.viewName === props.currentView
+      ? css`
+          @media (min-width: 48rem) {
+            background-color: ${props.theme[props.name.toLowerCase()]};
+          }
+        `
+      : css`
+          @media (min-width: 48rem) {
+            &:hover {
+              background-color: rgba(216, 216, 216, 0.2);
+            }
+          }
+        `}
 `;
 
 export default function Button({ view, setCurrentView, currentView, name }) {
