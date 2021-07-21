@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import styled from 'styled-components/macro';
 import { mediaQueries } from '../styles/mediaQueries';
-import Planet from './Planet';
+import Description from './Description';
+import PlanetFacts from './PlanetFacts';
 import Button from './Button';
 
 const StyledButtons = styled.div`
@@ -20,7 +21,7 @@ const StyledButtons = styled.div`
 export default function PlanetPage({ homePlanet }) {
   let { state } = useLocation();
 
-  const planet = homePlanet ? homePlanet : state.planet;
+  const [currentView, setCurrentView] = useState('overview');
 
   const views = [
     { displayName: '01 Overview', viewName: 'overview' },
@@ -28,7 +29,16 @@ export default function PlanetPage({ homePlanet }) {
     { displayName: '03 Surface Geology', viewName: 'geology' },
   ];
 
-  const [currentView, setCurrentView] = useState('overview');
+  const planet = homePlanet ? homePlanet : state.planet;
+
+  const { name, radius, revolution, rotation, temperature } = planet;
+
+  const info = Object.keys(planet)
+    .filter((key) => key === currentView)
+    .reduce((obj, key) => {
+      obj[key] = planet[key];
+      return obj[key];
+    }, {});
 
   return (
     <div>
@@ -43,7 +53,13 @@ export default function PlanetPage({ homePlanet }) {
           ></Button>
         ))}
       </StyledButtons>
-      <Planet planet={planet} currentView={currentView} />
+      <Description name={name} info={info} />
+      <PlanetFacts
+        radius={radius}
+        revolution={revolution}
+        rotation={rotation}
+        temperature={temperature}
+      />
     </div>
   );
 }
