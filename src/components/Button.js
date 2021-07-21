@@ -1,5 +1,6 @@
 import React from 'react';
-import styled from 'styled-components/macro';
+import styled, { css } from 'styled-components/macro';
+import { useViewport } from '../utils';
 
 const StyledButton = styled.button`
   height: 5rem;
@@ -16,8 +17,8 @@ const StyledButton = styled.button`
   position: relative;
 
   ${(props) =>
-    props.view === props.currentView
-      ? `
+    props.view.viewName === props.currentView &&
+    `
         :after {
           content: "";
           background: ${props.theme[props.name.toLowerCase()]};
@@ -33,14 +34,16 @@ const StyledButton = styled.button`
 `;
 
 export default function Button({ view, setCurrentView, currentView, name }) {
+  const { width } = useViewport();
+
   return (
     <StyledButton
       name={name}
-      onClick={() => setCurrentView(view)}
+      onClick={() => setCurrentView(view.viewName)}
       view={view}
       currentView={currentView}
     >
-      {view}
+      {width < 768 ? <>{view.viewName}</> : <>{view.displayName}</>}
     </StyledButton>
   );
 }

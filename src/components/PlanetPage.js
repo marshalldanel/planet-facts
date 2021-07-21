@@ -15,7 +15,11 @@ export default function PlanetPage({ homePlanet }) {
 
   const planet = homePlanet ? homePlanet : state.planet;
 
-  const views = ['geology', 'overview', 'structure'];
+  const views = [
+    { displayName: '01 Overview', viewName: 'overview' },
+    { displayName: '02 Internal Structure', viewName: 'structure' },
+    { displayName: '03 Surface Geology', viewName: 'geology' },
+  ];
 
   const [currentView, setCurrentView] = useState('overview');
 
@@ -24,7 +28,7 @@ export default function PlanetPage({ homePlanet }) {
       <StyledButtons>
         {views.map((view) => (
           <Button
-            key={view}
+            key={view.viewName}
             currentView={currentView}
             view={view}
             setCurrentView={setCurrentView}
