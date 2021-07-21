@@ -1,6 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import styled, { css } from 'styled-components/macro';
 import { mediaQueries } from '../styles/mediaQueries';
 
 const Circle = styled.span`
@@ -46,7 +47,7 @@ const NavList = styled.ul`
     `
       : mediaQueries('mobile', 'max')`transform: translateX(100%);
     `}
-
+  
   ${mediaQueries('tablet')`
     padding-bottom: 2.7rem;
     width: 100vw;
@@ -55,22 +56,49 @@ const NavList = styled.ul`
   ${mediaQueries('desktop')`
     padding: 0;
     width: 50vw;
-  `}
+    height: 100%;
+  `};
 `;
+
+// ALL THIS FOR THE HOVER BORDER
+const damnDesktopBorderColor = (theme, name) => {
+  const color = theme[name];
+  return css`
+    @media (min-width: 64rem) {
+      &:hover {
+        border-top: 0.4rem solid ${color};
+      }
+    }
+  `;
+};
 
 const NavItem = styled.li`
   align-items: center;
-  border-top: 0.1rem solid rgba(255, 255, 255, 0.2);
   display: flex;
   flex-flow: row nowrap;
   height: 6.6rem;
 
-  &:nth-child(1) {
-    border: none;
-  }
-  ${mediaQueries('tablet')`
+  ${(props) => damnDesktopBorderColor(props.theme, props.name)}
+
+  ${(props) =>
+    props.name === 'mercury'
+      ? css`
+          border-top: none;
+        `
+      : mediaQueries(
+          'mobile',
+          'max'
+        )`border-top: 0.1rem solid rgba(255, 255, 255, 0.2);`}
+
+  ${mediaQueries('tablet', 'min')`
     border: none;
     height: 2.5rem;
+  `}
+
+  ${mediaQueries('desktop')`
+    border-top: 0.4rem solid transparent;
+    height: 8.5rem;
+    padding-top: .6rem;
   `}
 `;
 
@@ -102,24 +130,41 @@ const Arrow = styled.span`
   `}
 `;
 
+// Don't need NavLink and location/activeClassName but leaving in for future
+const StyledLink = styled(NavLink)`
+  text-decoration: none;
+
+  &:focus,
+  &:hover,
+  &:visited,
+  &:link {
+    text-decoration: none;
+  }
+`;
+
 export default function Nav({ planets, visible, setVisible }) {
+  let { pathname } = useLocation();
+  const splitLocation = pathname.split('/');
+  const active = splitLocation[1];
+
   return (
     <NavList visible={visible}>
       {planets.map((planet) => (
-        <Link
+        <StyledLink
           to={{
             pathname: `/${planet.name.toLowerCase()}`,
             state: { planet },
           }}
           key={planet.name}
           onClick={() => setVisible(!visible)}
+          activeClassName="active"
         >
-          <NavItem>
+          <NavItem active={active} name={planet.name.toLowerCase()}>
             <Circle name={planet.name} />
             <NavName>{planet.name}</NavName>
             <Arrow />
           </NavItem>
-        </Link>
+        </StyledLink>
       ))}
     </NavList>
   );

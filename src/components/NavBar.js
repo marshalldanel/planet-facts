@@ -45,17 +45,29 @@ const NavStyles = styled.nav`
   `}
 `;
 
+const StyledLink = styled(Link)`
+  text-decoration: none;
+
+  &:focus,
+  &:hover,
+  &:visited,
+  &:link,
+  &:active {
+    text-decoration: none;
+  }
+`;
+
 export default function NavBar({ planets }) {
   return (
     <NavStyles>
-      <Link
+      <StyledLink
         to={{
           pathname: `/earth`,
           state: { planet: planets.find((planet) => planet.name === 'Earth') },
         }}
       >
         <TextLogo>The Planets</TextLogo>
-      </Link>
+      </StyledLink>
       <Burger planets={planets} />
     </NavStyles>
   );
