@@ -1,12 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FaExternalLinkAlt } from 'react-icons/fa';
+import { mediaQueries } from '../styles/mediaQueries';
 
 const StyledContainer = styled.div`
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
   margin: 2.8rem 2.4rem;
+
+  ${mediaQueries('tablet')`
+    align-items: flex-start;
+    margin: 0;
+  `};
 `;
 
 const StyledInfo = styled.p`
@@ -14,6 +20,11 @@ const StyledInfo = styled.p`
   line-height: 2.2rem;
   text-align: center;
   margin: 1.6rem 0 3.2rem 0;
+
+  ${mediaQueries('tablet')`
+    margin: 2.4rem 0 3.2rem 0;
+    text-align: left;
+  `};
 `;
 
 const StyledLink = styled.a`

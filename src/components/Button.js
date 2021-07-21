@@ -36,9 +36,10 @@ const StyledButton = styled.button`
     mediaQueries('tablet')`
       border: 0.1rem solid rgba(255, 255, 255, 0.2);
       height: 4rem;
-      width: 28.1rem;
+      text-align: left;
+      padding-left: 2rem;
       margin-bottom: 1.6rem;
-      font-size: 1.2rem;
+      font-size: .9rem;
       line-height: 2.5rem;
       letter-spacing: .26rem;
       :after {
