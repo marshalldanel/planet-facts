@@ -7,6 +7,8 @@ const GlobalStyle = createGlobalStyle`
   :root {
     font-size: 62.5%;
     box-sizing: border-box;
+    // X-axis scroll fixish 
+    overflow-x: hidden;
   } 
 
   *, *:before, *:after{
@@ -18,7 +20,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     font-size: 1.6rem;
     background-color:	hsl(240, 67%, 8%);
-    color: hsl(0, 0%, 100%)
+    color: hsl(0, 0%, 100%);
   }
 
   h1, h2 {

@@ -30,11 +30,15 @@ const NavStyles = styled.nav`
   position: sticky;
   background-color: hsl(240, 67%, 8%);
   z-index: 1;
+  // Cause of x-axis scroll on desktop, fix with max-width
   width: 100vw;
+  max-width: 100%;
 
   ${mediaQueries('tablet')`
     align-items: center;
+    // Cause of x-axis scroll on tablet, known problem
     flex-flow: column nowrap;
+    text-align: center;
     height: 15.9rem;
   `}
 
