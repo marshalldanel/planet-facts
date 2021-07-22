@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components/macro';
 import NavMenu from './NavMenu';
 import { mediaQueries } from '../styles/mediaQueries';
+import { useViewport } from '../utils';
 
 const BurgerStyles = styled.div`
   display: none;
@@ -31,12 +32,18 @@ const BurgerStyles = styled.div`
 
 export default function Burger({ planets }) {
   const [visible, setVisible] = useState(false);
+  const { width } = useViewport();
 
   // No scroll when mobile nav open
   useEffect(() => {
-    visible && (document.body.style.overflow = 'hidden');
-    !visible && (document.body.style.overflow = 'unset');
-  }, [visible]);
+    const shouldHideOverflow = async () => {
+      if (width < 768) {
+        visible && (document.body.style.overflow = 'hidden');
+        !visible && (document.body.style.overflow = 'unset');
+      }
+    };
+    shouldHideOverflow();
+  }, [visible, width]);
 
   return (
     <>
