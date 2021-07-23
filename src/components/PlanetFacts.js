@@ -12,6 +12,11 @@ const StyledContainer = styled.div`
   ${mediaQueries('tablet')`
     flex-flow: row nowrap;
     justify-content: center;
+    margin-bottom: 4rem;
+  `}
+
+  ${mediaQueries('desktopLg')`
+    margin: 0 14rem 5.6rem 14rem;
   `}
 `;
 

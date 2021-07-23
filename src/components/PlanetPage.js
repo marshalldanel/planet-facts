@@ -19,12 +19,23 @@ const StyledGrid = styled.div`
   `};
 
   ${mediaQueries('desktop')`
-    margin: 5rem 16.5rem 0 16.5rem;
-    grid-template-columns: 50% 50%;
+    height: 46rem;
+    margin: 5rem 10rem 0 10rem;
+    grid-template-columns: 50% 15% 35%;
     grid-template-rows: 50% 50%;
     grid-template-areas:
-    "svg description"
-    "svg buttons";
+    "svg . description"
+    "svg . buttons";
+  `};
+
+  ${mediaQueries('desktopLg')`
+    height: 72rem;
+    margin: 5rem 16.5rem 0 16.5rem;
+    grid-template-columns: 50% 18% 32%;
+    grid-template-rows: 60% 40%;
+    grid-template-areas:
+    "svg . description"
+    "svg . buttons";
   `};
 `;
 
@@ -41,6 +52,17 @@ const StyledButtons = styled.div`
     height: 15.2rem;
     justify-self: right;
     width: 28rem;
+  `};
+
+  ${mediaQueries('desktop')`
+    justify-self: left;
+  `};
+
+  ${mediaQueries('desktopLg')`
+    align-self: flex-start;
+    grid-area: buttons;
+    height: 17.6rem;
+    width: 35rem;
   `};
 `;
 

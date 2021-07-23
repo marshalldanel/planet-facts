@@ -31,20 +31,25 @@ const StyledButton = styled.button`
           width: 50%;
         };`}
 
-  // Change after info styling
-  ${(props) =>
-    mediaQueries('tablet')`
+  ${mediaQueries('tablet')`
       border: 0.1rem solid rgba(255, 255, 255, 0.2);
       height: 4rem;
       text-align: left;
       padding-left: 2rem;
       margin-bottom: 1.6rem;
-      font-size: .9rem;
       line-height: 2.5rem;
       letter-spacing: .26rem;
       :after {
         content: none;
       }
+  `};
+
+  ${mediaQueries('desktop')`
+      font-size: 1.2rem;
+  `};
+
+  ${mediaQueries('desktopLg')`
+      height: 4.8rem;
   `};
 
   // Button styles for tablet/desktop, can't pass into func

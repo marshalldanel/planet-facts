@@ -95,6 +95,14 @@ const NavItem = styled.li`
     height: 2.5rem;
   `}
 
+  ${(props) =>
+    props.name === 'neptune' &&
+    mediaQueries('desktop')(
+      css`
+        margin-right: 2rem;
+      `
+    )}
+
   ${mediaQueries('desktop')`
     border-top: 0.4rem solid transparent;
     height: 8.5rem;
@@ -130,7 +138,7 @@ const Arrow = styled.span`
   `}
 `;
 
-// Don't need NavLink and location/activeClassName but leaving in for future
+// Don't need NavLink and location/activeClassName but leaving in for now
 const StyledLink = styled(NavLink)`
   text-decoration: none;
 

@@ -21,8 +21,15 @@ const StyledBox = styled.div`
 
   ${mediaQueries('desktop')`
     align-items: flex-start;
-    height: 128px;
-    margin: 0 3rem;
+    height: 10.8rem;
+    margin: 0 1.8rem;
+    width: 20.9rem;
+  `}
+
+  ${mediaQueries('desktopLg')`
+    align-items: flex-start;
+    height: 12.8rem;
+    margin: 0 1.5rem;
     width: 25.5rem;
   `}
 
@@ -42,8 +49,15 @@ const StyledBox = styled.div`
     `}
 
     ${mediaQueries('desktop')`
-      font-size: 1.1rem;
-      letter-spacing: .1rem;
+      font-size: .9rem;
+      letter-spacing: .085rem;
+      line-height: 2.5rem;
+      padding: 1.8rem 0 0 1.9rem;
+    `}
+
+    ${mediaQueries('desktopLg')`
+      font-size: 1rem;
+      letter-spacing: .01rem;
       line-height: 2.5rem;
       padding: 2rem 0 0 2.3rem;
     `}
@@ -63,6 +77,13 @@ const StyledBox = styled.div`
     `}
 
     ${mediaQueries('desktop')`
+      font-size: 3rem;
+      letter-spacing: -.15rem;
+      line-height: 5.2rem;
+      padding: 0 0 2.7rem 1.9rem;
+    `}
+
+    ${mediaQueries('desktopLg')`
       font-size: 4rem;
       letter-spacing: -.15rem;
       line-height: 5.2rem;

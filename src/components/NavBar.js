@@ -7,6 +7,7 @@ import Burger from './Burger';
 
 const TextLogo = styled.div`
   font-family: Antonio;
+  color: #fff;
   font-size: 2.8rem;
   line-height: 3.6rem;
   letter-spacing: -0.105rem;

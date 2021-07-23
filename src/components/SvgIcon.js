@@ -12,6 +12,10 @@ const SvgContainer = styled.div`
     grid-area: svg;
     justify-self: center;
   `};
+
+  ${mediaQueries('desktop')`
+    margin: 0;
+  `};
 `;
 
 const SvgImage = styled.img`
@@ -26,7 +30,8 @@ const SvgImage = styled.img`
   `};
 
   ${mediaQueries('desktop')`
-    width: 70%;
+    margin: 0;
+    width: 100%;
   `};
 `;
 
@@ -55,8 +60,3 @@ export default function SvgIcon(props) {
     </SvgContainer>
   );
 }
-
-// & svg {
-//     height: ${(props) => (props.height ? `${props.height}px` : '100%')};
-//     width: ${(props) => (props.width ? `${props.width}px` : '100%')};
-//   }
