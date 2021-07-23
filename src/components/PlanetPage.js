@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import styled from 'styled-components/macro';
 import { mediaQueries } from '../styles/mediaQueries';
+import SvgIcon from './SvgIcon';
 import Description from './Description';
 import PlanetFacts from './PlanetFacts';
 import Button from './Button';
@@ -10,9 +11,20 @@ const StyledGrid = styled.div`
   ${mediaQueries('tablet')`
     display: grid;
     grid-template-columns: 50% 50%;
-    grid-template-rows: 25rem;
-    grid-template-areas: "description buttons";
+    grid-template-rows: 45rem 25rem;
+    grid-template-areas:
+    "svg svg"
+    "description buttons";
     margin: 0 4rem 3.6rem 4rem;
+  `};
+
+  ${mediaQueries('desktop')`
+    margin: 5rem 16.5rem 0 16.5rem;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 50% 50%;
+    grid-template-areas:
+    "svg description"
+    "svg buttons";
   `};
 `;
 
@@ -68,6 +80,7 @@ export default function PlanetPage({ homePlanet }) {
             ></Button>
           ))}
         </StyledButtons>
+        <SvgIcon view={currentView} planet={planet.name.toLowerCase()} />
         <Description name={name} info={info} />
       </StyledGrid>
       <PlanetFacts
